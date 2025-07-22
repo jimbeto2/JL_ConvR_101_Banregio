@@ -24,11 +24,11 @@ export async function handleIncomingCall(callData: CallDetails): Promise<string>
               <Connect action="https://${config.ngrok.domain}/api/action">
                     <ConversationRelay url="wss://${config.ngrok.domain}" dtmfDetection="true" interruptible="true"
                       welcomeGreeting="${config.twilio.welcomeGreeting}"
-                      ttsProvider="${config.languages.spanish.ttsProvider}"
-                      ttsLanguage="${config.languages.spanish.locale_code}"
-                      voice="${config.languages.spanish.voice}"
-                      transcriptionProvider="${config.languages.spanish.transcriptionProvider}"
-                      transcriptionLanguage="${config.languages.spanish.transcriptionLanguage}"
+                      ttsProvider="${config.languages.portuguese.ttsProvider}"
+                      ttsLanguage="${config.languages.portuguese.locale_code}"
+                      voice="${config.languages.portuguese.voice}"
+                      transcriptionProvider="${config.languages.portuguese.transcriptionProvider}"
+                      transcriptionLanguage="${config.languages.portuguese.transcriptionLanguage}"
                       elevenlabsTextNormalization="on"
                       > 
                     </ConversationRelay>
