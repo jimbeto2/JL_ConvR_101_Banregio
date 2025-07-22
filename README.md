@@ -63,6 +63,12 @@ Once created, open `.env` in your code editor. You are required to set the follo
 | `TWILIO_WORKFLOW_SID` | The Taskrouter Workflow SID, which is automatically provisioned with your Flex account. Used to enqueue inbound call with Flex agents. To find this, in the Twilio Console go to TaskRouter > Workspaces > Flex Task Assignment > Workflows |`WWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`|
 | `WELCOME_GREETING` | The message automatically played to the caller |
 | `OPENAI_API_KEY` | Your OpenAI API Key | `your_api_key_here` |
+| `TWILIO_VOICE_INTELLIGENCE_SID` | Twilio Voice Intelligence SID used for call transcription | `GAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` |
+| `SPEECH_KEY` | Speech service API key | |
+| `SPEECH_REGION` | Region for the speech service | |
+| `GOOGLESHEETS_SPREADSHEET_ID` | Google Sheets spreadsheet ID used by tools | |
+| `GOOGLE_CALENDAR_ID` | Google Calendar ID used by tools | |
+| `GOOGLE_SERVICE_ACCOUNT_KEY` | JSON credentials for Google APIs | |
 
 Below is an optional environment variable that has default value that can be overridden:
 | `PORT` | The port your local server runs on. | `3000` |
@@ -104,6 +110,7 @@ With the development server running, you can now begin testing the Voice AI Assi
 ## Controllers
 
 - `handleIncomingCall`: Processes incoming call (see [src/controllers/callController.ts](src/controllers/callController.ts))
+- `initiateRecording`: Starts a call recording (see [src/controllers/callController.ts](src/controllers/callController.ts))
 - `handleConnectAction`: Handles connect action (see [src/controllers/connectActionController.ts](src/controllers/connectActionController.ts))
 
 ## LLM Services
@@ -112,12 +119,20 @@ With the development server running, you can now begin testing the Voice AI Assi
 
 ### Tools
 
-- `searchCommonMedicalTerms`: Searches common medical terms (see [src/services/llm/tools/searchCommonMedicalTerms.ts](src/services/llm/tools/searchCommonMedicalTerms.ts))
-- `humanAgentHandoff`: Handles handoff to a human agent (see [src/services/llm/tools/humanAgentHandoff.ts](src/services/llm/tools/humanAgentHandoff.ts))
-- `verifyUserIdentity`: Verifies user identity (see [src/services/llm/tools/verifyUserIdentity.ts](src/services/llm/tools/verifyUserIdentity.ts))
-- `checkPendingBill`: Checks for pending medical bills (see [src/services/llm/tools/checkPendingBill.ts](src/services/llm/tools/checkPendingBill.ts))
+- `addSurveyResponse`: Stores survey answers (see [src/services/llm/tools/addSurveyResponse.ts](src/services/llm/tools/addSurveyResponse.ts))
+- `bookDriver`: Books a driver using calendar data (see [src/services/llm/tools/bookDriver.ts](src/services/llm/tools/bookDriver.ts))
+- `checkCardDelivery`: Checks card delivery status (see [src/services/llm/tools/checkCardDelivery.ts](src/services/llm/tools/checkCardDelivery.ts))
 - `checkHsaAccount`: Checks if the user has an HSA account (see [src/services/llm/tools/checkHsaAccount.ts](src/services/llm/tools/checkHsaAccount.ts))
+- `checkIncreaseLimit`: Determines eligibility for a credit or account limit increase (see [src/services/llm/tools/checkIncreaseLimit.ts](src/services/llm/tools/checkIncreaseLimit.ts))
 - `checkPaymentOptions`: Payment options available to the user (see [src/services/llm/tools/checkPaymentOptions.ts](src/services/llm/tools/checkPaymentOptions.ts))
+- `checkPendingBill`: Checks for pending medical bills (see [src/services/llm/tools/checkPendingBill.ts](src/services/llm/tools/checkPendingBill.ts))
+- `getCurrentWeather`: Returns demo weather information (see [src/services/llm/tools/getCurrentWeather.ts](src/services/llm/tools/getCurrentWeather.ts))
+- `humanAgentHandoff`: Handles handoff to a human agent (see [src/services/llm/tools/humanAgentHandoff.ts](src/services/llm/tools/humanAgentHandoff.ts))
+- `identifyUser`: Looks up user information in a spreadsheet (see [src/services/llm/tools/identifyUser.ts](src/services/llm/tools/identifyUser.ts))
+- `searchCommonMedicalTerms`: Searches common medical terms (see [src/services/llm/tools/searchCommonMedicalTerms.ts](src/services/llm/tools/searchCommonMedicalTerms.ts))
+- `switchLanguage`: Switches the conversation language (see [src/services/llm/tools/switchLanguage.ts](src/services/llm/tools/switchLanguage.ts))
+- `troubleshootLoginIssues`: Helps resolve login issues (see [src/services/llm/tools/troubleshootLoginIssues.ts](src/services/llm/tools/troubleshootLoginIssues.ts))
+- `verifyUserIdentity`: Verifies user identity (see [src/services/llm/tools/verifyUserIdentity.ts](src/services/llm/tools/verifyUserIdentity.ts))
 
 ## Data
 
