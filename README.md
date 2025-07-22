@@ -43,7 +43,7 @@ Note that the `ngrok` command above forwards to a development server running on 
 
 2. Navigate to the project directory:
    ```sh
-   cd davivienda-hack-day-cr
+   cd conversation-relay-application-template
    ```
 3. Install dependencies:
    ```sh
@@ -64,8 +64,6 @@ Once created, open `.env` in your code editor. You are required to set the follo
 | `WELCOME_GREETING` | The message automatically played to the caller |
 | `OPENAI_API_KEY` | Your OpenAI API Key | `your_api_key_here` |
 | `TWILIO_VOICE_INTELLIGENCE_SID` | Twilio Voice Intelligence SID used for call transcription | `GAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` |
-| `SPEECH_KEY` | Speech service API key | |
-| `SPEECH_REGION` | Region for the speech service | |
 | `GOOGLESHEETS_SPREADSHEET_ID` | Google Sheets spreadsheet ID used by tools | |
 | `GOOGLE_CALENDAR_ID` | Google Calendar ID used by tools | |
 | `GOOGLE_SERVICE_ACCOUNT_KEY` | JSON credentials for Google APIs | |
