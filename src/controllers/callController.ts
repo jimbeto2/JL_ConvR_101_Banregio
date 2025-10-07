@@ -16,7 +16,7 @@ export async function handleIncomingCall(callData: CallDetails): Promise<string>
           <Response>
               <Start>
                 <Transcription intelligenceService="${config.twilio.voiceIntelligenceSid}"
-                  languageCode="es-MX" 
+                  languageCode="pt-BR" 
                   inboundTrackLabel="OpenAI Assistant"
                   outboundTrackLabel="Customer"
                   statusCallbackUrl="https://events.hookdeck.com/e/src_su8VnSes9EUDvIpR3fV01ywb/transcriptions"/> 

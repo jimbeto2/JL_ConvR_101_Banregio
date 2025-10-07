@@ -28,7 +28,7 @@ router.post('/incoming-call', async (req: Request, res: Response) => {
     res.status(200).send(callDetails);
 
     // Attempt to start recording with a retry mechanism
-    tryStartRecording(req.body.CallSid);
+    //tryStartRecording(req.body.CallSid);
   } catch (error) {
     res.status(500).json({ error: 'Failed to process incoming call' });
   }

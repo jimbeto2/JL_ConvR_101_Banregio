@@ -103,3 +103,32 @@ export type ConversationRelayMessage =
   | ErrorMessage
   | TextMessage
   | DtmfMessage;
+
+
+export type ConversationMessage = {
+  ConversationSid: string;
+  MessageSid: string;
+  Body: string;
+  Author: string;
+  ParticipantSid: string;
+  EventType: string;
+  Source: string;
+  ClientIdentity?: string;
+};
+
+export type ConversationEvent = {
+  ConversationSid: string;
+  EventType: string;
+  ParticipantSid?: string;
+  ClientIdentity?: string;
+};
+
+export type HandoffData = {
+  reason?: string;
+  priority?: number;
+  attributes?: Record<string, any>;
+  customerInfo?: Record<string, any>;
+  customerPhone?: string;
+  proxyAddress?: string;
+  conversationSid?: string;
+};

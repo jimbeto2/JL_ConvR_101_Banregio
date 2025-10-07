@@ -92,6 +92,8 @@ export class LLMService extends EventEmitter {
       // Add incoming messages to the conversation history
       this.messages.push(...messages);
 
+      console.log("chatCompletion messages:", this.messages);
+
       // Prepare the completion request
       const completion = await this.openai.chat.completions.create({
         model: options?.model || "gpt-4-turbo-preview",
@@ -102,12 +104,15 @@ export class LLMService extends EventEmitter {
       });
 
       if ("choices" in completion) {
-
         const message = completion.choices[0]?.message;
 
-          // Check if there are tool calls that need to be executed
+        if (!message) {
+          throw new Error("No message received from completion");
+        }
+
+        // Check if there are tool calls that need to be executed
         if (message?.tool_calls && message.tool_calls.length > 0) {
-          // Process tool calls
+          // Process all tool calls
           const toolCallResults = await Promise.all(
             message.tool_calls.map(async (toolCall) => {
               try {
@@ -133,13 +138,12 @@ export class LLMService extends EventEmitter {
             })
           );
 
-          // Prepare messages for next completion
+          // Prepare messages for next completion - include the assistant message with tool calls
           const newMessages: ChatCompletionMessageParam[] = [
-            ...this.messages,
             {
               role: "assistant",
               tool_calls: message.tool_calls,
-              content: null,
+              content: message.content,
             },
             ...toolCallResults,
           ];
@@ -150,19 +154,20 @@ export class LLMService extends EventEmitter {
 
         // Add the assistant's message to conversation history
         this.messages.push(message);
-        console.log("message", message);
+        console.log("final message:", message);
         this.emit("chatCompletion:complete", message);
 
-        return completion; 
+        // Check for graceful ending after completion
+        if (this._shouldEndAfterStream) {
+          console.log("Ending conversation after final response...");
+          this.emit("endInteraction");
+          this._shouldEndAfterStream = false;
+        }
 
-      
-      } else
-        {
-
-        throw new Error("Streaming completions are not supported in this context");
+        return completion;
+      } else {
+        throw new Error("Invalid completion response format");
       }
-
-  
 
     } catch (error) {
       this.emit("chatCompletion:error", error);
@@ -346,6 +351,12 @@ export class LLMService extends EventEmitter {
         function: { name, arguments: args },
       } = toolCall;
 
+       if (name === "human_agent_handoff") {
+        this.emit("humanAgentHandoff", JSON.parse(args));
+        return "Handoff request initiated. Connecting you to a human agent.";
+      }
+
+
       // update the toolFunction to use the toolDefinitions
       const toolFunction = {
         check_increase_limit: checkIncreaseLimit,
@@ -353,7 +364,6 @@ export class LLMService extends EventEmitter {
         troubleshoot_login_issues: troubleshootLoginIssues,
         check_pending_bill: checkPendingBill,
         search_common_medical_terms: searchCommonMedicalTerms,
-        human_agent_handoff: humanAgentHandoff,
         check_hsa_account: checkHsaAccount,
         check_payment_options: checkPaymentOptions,
         switch_language: switchLanguage,
@@ -368,9 +378,7 @@ export class LLMService extends EventEmitter {
 
       const result = await toolFunction(JSON.parse(args));
 
-      if (name === "human_agent_handoff") {
-        this.emit("humanAgentHandoff", JSON.parse(args));
-      } else if (name === "switch_language") {
+      if (name === "switch_language") {
         this.emit("switchLanguage", JSON.parse(args));
       } else if (name === "add_survey_response") {
         this._shouldEndAfterStream = true;
