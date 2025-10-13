@@ -22,7 +22,7 @@ export const languageOptions: { [key: string]: LanguageOption } = {
     speechModel: "nova-2-general",
   },
   spanish: {
-    jlWelcomeGreeting: "Hola cara de bola",
+    jlWelcomeGreeting: "Bienvenido a Twilio, Como puedo ayudarte hoy?",
     locale_code: "es-ES",
     ttsProvider: "ElevenLabs",
     voice: "x5IDPSl4ZUbhosMmVFTk",
