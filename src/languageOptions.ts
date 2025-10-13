@@ -7,6 +7,7 @@ export interface LanguageOption {
   transcriptionProvider?: string;
   transcriptionLanguage?: string;
   speechModel?: string;
+  jlWelcomeGreeting?: string;
 }
 
 export const languageOptions: { [key: string]: LanguageOption } = {
@@ -21,6 +22,7 @@ export const languageOptions: { [key: string]: LanguageOption } = {
     speechModel: "nova-2-general",
   },
   spanish: {
+    jlWelcomeGreeting: "Hola cara de bola",
     locale_code: "es-ES",
     ttsProvider: "ElevenLabs",
     voice: "x5IDPSl4ZUbhosMmVFTk",
@@ -37,8 +39,3 @@ export const languageOptions: { [key: string]: LanguageOption } = {
     speechModel: "telephony",
   },
 };
-
-// Other examples of language options:
-//   'hi-IN': 'hi-IN-Wavenet-A',
-//   'fr-FR': 'fr-FR-Journey-F',
-//   'cmn-CN': 'cmn-CN-Wavenet-A',

@@ -41,13 +41,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gabeoliveira/conversation-relay-application-template.git"
+    "url": "git+https://github.com/jimbeto2/JL_ConvR_101_Banregio.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/gabeoliveira/conversation-relay-application-template/issues"
+    "url": "https://github.com/jimbeto2/JL_ConvR_101_Banregio.git/issues"
   },
-  "homepage": "https://github.com/gabeoliveira/conversation-relay-application-template#readme",
+  "homepage": "https://github.com/jimbeto2/JL_ConvR_101_Banregio.git#readme",
   "keywords": []
 }
