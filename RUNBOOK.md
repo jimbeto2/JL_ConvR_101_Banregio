@@ -25,7 +25,7 @@ Before starting, ensure you have:
 
 ```bash
 cd conversation-relay-application-template
-yarn install
+npm install
 ```
 
 **Validation:** You should see `success Saved lockfile` and no error messages.
@@ -71,7 +71,7 @@ Open `.env` in your code editor and configure the following **required** variabl
 | `TWILIO_WORKFLOW_SID` | Twilio Console > TaskRouter > Workspaces > Flex Task Assignment > Workflows | `WWxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
 | `WELCOME_GREETING` | Your choice | `Hello! I'm your AI assistant. How can I help you today?` |
 | `OPENAI_API_KEY` | [OpenAI Platform](https://platform.openai.com/api-keys) | `sk-...` |
-| `TWILIO_VOICE_INTELLIGENCE_SID` | Twilio Console > Voice Intelligence > Services | `GAxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| `TWILIO_VOICE_INTELLIGENCE_SID` | Twilio Console > Voice Intelligence > Services | `GAxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` | 
 
 **Optional Google integrations** (can skip for initial testing):
 - `GOOGLESHEETS_SPREADSHEET_ID`
@@ -305,3 +305,10 @@ For customization topics:
 - Production deployment considerations
 
 See [README.md](README.md) for detailed technical reference.
+
+
+## NOTAS JL 251013 ***
+EN EL ARCHIVO .env tambien se requieren las siguietes, revisar en /src/config.ts
+
+TWILIO_WORKSPACE_SID="WSxxxxxx"
+TWILIO_CONVERSATION_SERVICE_SID="ISxxxx".

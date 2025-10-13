@@ -47,7 +47,7 @@ Note that the `ngrok` command above forwards to a development server running on 
    ```
 3. Install dependencies:
    ```sh
-   yarn install
+   npm install
    ```
 4. Copy the sample environment file and configure the environment variables:
    ```sh
