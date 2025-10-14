@@ -26,6 +26,9 @@ const configSchema = z.object({
   // OpenAI Configuration
   OPENAI_API_KEY: z.string().optional(),
 
+    // Google APIs Configuration
+  GOOGLESHEETS_SPREADSHEET_ID: z.string().optional(),
+  GOOGLE_CALENDAR_ID: z.string().optional(),
   
   // Optional: Server Port
   PORT: z.string().optional().default('3000')
@@ -67,7 +70,11 @@ export const config = {
   server: {
     port: parseInt(parsedConfig.PORT || '3000', 10)
   },
-  
+  google: {
+    spreadsheetId: parsedConfig.GOOGLESHEETS_SPREADSHEET_ID,
+    calendarId: parsedConfig.GOOGLE_CALENDAR_ID
+  },
+
   languages: languageOptions,
 };
 
