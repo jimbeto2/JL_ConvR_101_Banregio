@@ -25,7 +25,7 @@ export const languageOptions: { [key: string]: LanguageOption } = {
     jlWelcomeGreeting: "Bienvenido a Twilio, Como puedo ayudarte hoy?",
     locale_code: "es-ES",
     ttsProvider: "ElevenLabs",
-    voice: "x5IDPSl4ZUbhosMmVFTk",
+    voice: "cAvMBIZ0VNTU8XdsUpEq",
     transcriptionProvider: "Deepgram",
     transcriptionLanguage: 'es',
     speechModel: "nova-2-general",
