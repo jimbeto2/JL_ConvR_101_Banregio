@@ -18,9 +18,6 @@ const configSchema = z.object({
   
   // Ngrok Configuration
   NGROK_DOMAIN: z.string().optional(),
-
-  // Conversation Relay Welcome Greeting
-  WELCOME_GREETING: z.string().optional(),
   
   // Speech Service Configuration
   SPEECH_KEY: z.string().optional(),
@@ -29,9 +26,6 @@ const configSchema = z.object({
   // OpenAI Configuration
   OPENAI_API_KEY: z.string().optional(),
 
-  // Google APIs Configuration
-  GOOGLESHEETS_SPREADSHEET_ID: z.string().optional(),
-  GOOGLE_CALENDAR_ID: z.string().optional(),
   
   // Optional: Server Port
   PORT: z.string().optional().default('3000')
@@ -58,7 +52,6 @@ export const config = {
     workflowSid: parsedConfig.TWILIO_WORKFLOW_SID,
     workspaceSid: parsedConfig.TWILIO_WORKSPACE_SID,
     voiceIntelligenceSid: parsedConfig.TWILIO_VOICE_INTELLIGENCE_SID,
-    welcomeGreeting: parsedConfig.WELCOME_GREETING,
     conversationServiceSid: parsedConfig.TWILIO_CONVERSATION_SERVICE_SID
   },
   ngrok: {

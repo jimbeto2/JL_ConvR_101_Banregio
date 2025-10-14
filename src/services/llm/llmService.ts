@@ -78,7 +78,7 @@ export class LLMService extends EventEmitter {
       },
       {
         role: "assistant",
-        content: config.twilio.welcomeGreeting
+        content: config.languages.spanish.jlWelcomeGreeting
         
       });
   }

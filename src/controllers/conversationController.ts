@@ -171,7 +171,7 @@ async function sendWelcomeMessage(conversationSid: string): Promise<void> {
       .conversations(conversationSid)
       .messages
       .create({
-        body: config.twilio.welcomeGreeting,
+        body: config.languages.spanish.jlWelcomeGreeting,
         author: 'assistant'
       });
   } catch (error) {
