@@ -67,10 +67,6 @@ export const config = {
   server: {
     port: parseInt(parsedConfig.PORT || '3000', 10)
   },
-  google: {
-    spreadsheetId: parsedConfig.GOOGLESHEETS_SPREADSHEET_ID,
-    calendarId: parsedConfig.GOOGLE_CALENDAR_ID
-  },
   
   languages: languageOptions,
 };
