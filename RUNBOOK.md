@@ -306,9 +306,3 @@ For customization topics:
 
 See [README.md](README.md) for detailed technical reference.
 
-
-## NOTAS JL 251013 ***
-EN EL ARCHIVO .env tambien se requieren las siguietes, revisar en /src/config.ts
-
-TWILIO_WORKSPACE_SID="WSxxxxxx"
-TWILIO_CONVERSATION_SERVICE_SID="ISxxxx".
